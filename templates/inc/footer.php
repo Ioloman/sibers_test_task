@@ -8,7 +8,7 @@
 <?php if (isset($scripts)): ?> 
 
 <?php foreach ($scripts as $script): ?>
-<script src="static/js/<?php echo $script ?>"></script>
+<script src="<?php echo $script ?>"></script>
 <?php endforeach; ?>
 
 <?php endif; ?>

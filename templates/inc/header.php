@@ -24,7 +24,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <!-- <a class="nav-link @if(Request::url() === route('homepage'))active @endif" href="{{ route('homepage') }}">Главная</a> -->
-                            <a class="nav-link active" href="">Main page</a>
+                            <a class="nav-link active" href="">Manage Users</a>
                         </li>
                     </ul>
                     <!-- guest -->
