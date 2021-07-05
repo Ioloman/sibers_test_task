@@ -22,7 +22,7 @@ CREATE TABLE `registered_users`.`users_data`
   `last_name` Varchar(50),
   `birth_date` Date,
   `gender` Varchar(10),
-  `user_id` INT(11) UNSIGNED NOT NULL,
+  `user_id` Int(11) UNSIGNED NOT NULL,
 
   INDEX `user_id` (`user_id`),
   PRIMARY KEY (`id`)

@@ -7,3 +7,5 @@
 spl_autoload_register(function (string $class_name){
     require_once 'src/' . $class_name . '.php';
 });
+
+define('ROOT_URL', '/');

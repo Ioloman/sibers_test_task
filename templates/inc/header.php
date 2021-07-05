@@ -16,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="">Admin</a>
+                <a class="navbar-brand" href="<?php echo ROOT_URL; ?>">Admin</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -24,7 +24,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <!-- <a class="nav-link @if(Request::url() === route('homepage'))active @endif" href="{{ route('homepage') }}">Главная</a> -->
-                            <a class="nav-link active" href="">Manage Users</a>
+                            <a class="nav-link active" href="<?php echo ROOT_URL; ?>">Manage Users</a>
                         </li>
                     </ul>
                     <!-- guest -->
