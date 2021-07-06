@@ -7,7 +7,7 @@ $get = filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
 $model = new UserModel();
 
 $params = [];
-$params['total'] = $model->getAmount()[0]->total;
+$params['total'] = $model->getAmount()->total;
 if (isset($get['show']) && is_numeric($get['show']))
     $params['show'] = (int) $get['show'];
 

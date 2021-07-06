@@ -9,3 +9,9 @@ spl_autoload_register(function (string $class_name){
 });
 
 define('ROOT_URL', '/');
+
+define('USER_URL', '/userEntry.php');
+
+define('DELETE_URL', '/deleteUser.php');
+
+define('UPDATE_URL', '/updateUser.php');

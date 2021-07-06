@@ -65,6 +65,9 @@ const setupPagination = () => {
 
         $ul.append($next);
 
+    $ul.attr('data-entries-show', show);
+    $('total').html(totalEntries);
+
 }
 
 $(function () {

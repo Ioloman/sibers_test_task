@@ -59,12 +59,7 @@ include 'inc/header.php'
             </table>
           </div>
           <div class="card-footer clearfix">
-            <div class="float-md-start">Showing 
-              <?php 
-              $offset = $show * ($page - 1);
-              echo strval(1 + $offset)." to ".strval(($show + $offset) > $total ? $total : ($show + $offset))." of $total entries"; 
-              ?>
-            </div>
+            <?php include 'inc/calculatePages.php' ?>
             <div class="float-md-end">
             <nav>
               <ul class="pagination" data-entries-total="<?php echo $total; ?>">
@@ -95,9 +90,11 @@ include 'inc/header.php'
  * @var array $scripts
  */
 $scripts = [
-  'static/js/pagination.js',
-  'static/js/sorting.js',
-  'static/js/modalSetting.js',
+  '/static/js/helpers.js',
+  '/static/js/pagination.js',
+  '/static/js/deleteUser.js',
+  '/static/js/sorting.js',
+  '/static/js/modalSetting.js',
   'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js',
   '//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js',
 ];

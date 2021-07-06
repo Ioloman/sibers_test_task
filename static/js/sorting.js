@@ -1,3 +1,24 @@
+function updateEntries(paramsString){
+    $.ajax({
+        type: 'GET',
+        url: window.location.pathname + paramsString,
+        dataType: 'html'
+    }).done((data, textStatus, jqXHR) => {
+        const $data = $(data);
+        $data.hide();
+        $('#entries').html($data);
+        $data.fadeIn(200);
+        window.history.pushState(null, null, window.location.pathname + '?' + paramsString.substring(11));
+        setupPagination();
+        addDeleteListeners();
+    }).fail( (xhr, status, errorThrown) => {
+        $('#errorModal div.modal-body > p').html('Sorting failed, please try again!');
+        (new bootstrap.Modal(document.getElementById('errorModal'))).show();
+        console.log( "Error: " + errorThrown );
+        console.log( "Status: " + status );
+    });
+}
+
 $(document).ready(function (){
     $('thead .sorting').on('click', function (e) {
         const $header = $(this);
@@ -27,15 +48,9 @@ $(document).ready(function (){
         }
         if (direction)
             paramsString += '&sorting=' + direction + sortingField;
-        $.ajax({
-            type: 'GET',
-            url: window.location.pathname + paramsString,
-            dataType: 'html'
-        }).done((data, textStatus, jqXHR) => {
-            $('#entries').html(data);
-            window.history.pushState(null, null, window.location.pathname + '?' + paramsString.substring(11));
-            setupPagination();
-        });
+
+        updateEntries(paramsString);
+        
     });
     $('#show').on('change', function(e){
         let paramsString = '?show=' + $(this).val();
@@ -45,6 +60,5 @@ $(document).ready(function (){
                 paramsString += '&' + key + '=' + urlParams.get(key);
         }
         window.location.search = paramsString;
-        console.log(paramsString);
     });
 });
