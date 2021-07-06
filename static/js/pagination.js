@@ -2,6 +2,21 @@ function range(startAt = 0, size) {
     return [...Array(size).keys()].map(i => i + startAt);
 }
 
+function generatePagesArray(firstPage, lastPage, currentPage){
+    const array = [currentPage];
+    if (currentPage > firstPage) array.unshift(currentPage - 1);
+    if (currentPage - 1 > firstPage) array.unshift(currentPage - 2);
+    if (currentPage - 3 > firstPage) array.unshift(null);
+    if (currentPage - 2 > firstPage) array.unshift(firstPage);
+
+    if (currentPage < lastPage) array.push(currentPage + 1);
+    if (currentPage + 1 < lastPage) array.push(currentPage + 2);
+    if (currentPage + 3 < lastPage) array.push(null);
+    if (currentPage + 2 < lastPage) array.push(lastPage);
+
+    return array;
+}
+
 const setupPagination = () => {
     const $ul = $('ul.pagination');
     const urlParams = new URLSearchParams(window.location.search);
@@ -23,7 +38,7 @@ const setupPagination = () => {
             pages = range(firstPage, lastPage);
             break;
         default:
-            pages = [1, 2, 3, null, lastPage - 2, lastPage - 1, lastPage];
+            pages = generatePagesArray(firstPage, lastPage, page);
             break;
     }
 
