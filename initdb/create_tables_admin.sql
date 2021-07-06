@@ -1,4 +1,8 @@
-﻿-- Table users
+﻿DROP TABLE IF EXISTS `registered_users`.`users`;
+DROP TABLE IF EXISTS `registered_users`.`users_data`;
+DROP TABLE IF EXISTS `registered_users`.`roles`;
+
+-- Table users
 
 CREATE TABLE `registered_users`.`users`
 (
@@ -46,5 +50,5 @@ ALTER TABLE `registered_users`.`users` ADD FOREIGN KEY (`role_id`) REFERENCES `r
 ;
 
 INSERT INTO `registered_users`.`roles`(id, role) VALUES (1, 'user'), (2, 'admin');
-INSERT INTO `registered_users`.`users`(login,password,role_id) VALUES('test','admin',2);
-INSERT INTO `registered_users`.`users_data`(user_id) VALUES(1);
+INSERT INTO users(id,login,password,role_id,created_at) VALUES(1,'admin','c93ccd78b2076528346216b3b2f701e6',2,'2021-07-06 19:13:23'),(2,'admin2','c93ccd78b2076528346216b3b2f701e6',2,'2021-07-06 19:16:53');
+INSERT INTO `registered_users`.`users_data`(user_id) VALUES(1),(2);
