@@ -57,6 +57,7 @@ $home_template->show = isset($params['show']) ? $params['show'] : 10;
 $home_template->page = isset($params['page']) ? $params['page'] : 1;
 $home_template->total = $params['total'];
 $home_template->sorting = isset($get['sorting']) ? $get['sorting'] : 'dcreated_at';
+$home_template->roles = $model->getRoles();
 echo $home_template;
 
 

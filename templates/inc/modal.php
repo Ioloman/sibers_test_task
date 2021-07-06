@@ -9,21 +9,22 @@
                   <div class="mb-3 row">
                       <label class="col-form-label col-2">Login: </label>
                       <div class="col">
-                          <input name="login" class="form-control" type="text" placeholder="User's login" maxlength="255">
+                          <input name="login" class="form-control" type="text" placeholder="User's login" maxlength="50" name="login" required>
                       </div>
                   </div>
                   <div class="mb-3 row">
                       <label class="col-form-label col-2">Password: </label>
                       <div class="col">
-                          <input name="password" class="form-control" type="password" placeholder="User's password"  maxlength="255">
+                          <input name="password" class="form-control" type="password" placeholder="User's password"  maxlength="50" name="password" required>
                       </div>
                   </div>
                   <div class="mb-3 row">
                       <label class="col-form-label col-2">Role: </label>
                       <div class="col-auto">
-                        <select class="form-select">
-                          <option value="user" selected>User</option>
-                          <option value="admin">Admin</option>
+                        <select class="form-select" name="role">
+                          <?php foreach ($roles as $role): ?>
+                          <?php echo "<option value=\"$role->id\"".($role->id == 1 ? " selected" : "").">$role->role</option>" ?>
+                          <?php endforeach; ?>
                         </select>
                       </div>
                   </div>
@@ -39,11 +40,11 @@
                         <div class="accordion-body">
                           <div class="mb-3 row">
                             <div class="col-6 form-floating">
-                              <input type="text" class="form-control" placeholder="First name" aria-label="Last name" id="floatingFirstName">
+                              <input type="text" class="form-control" placeholder="First name" aria-label="First name" id="floatingFirstName" name="first_name" maxlength="50">
                               <label for="floatingFirstName" class="ms-2">First name</label>
                             </div>
                             <div class="col-6 form-floating">
-                              <input type="text" class="form-control" placeholder="First name" aria-label="Last name" id="floatingLastName">
+                              <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" id="floatingLastName" name="last_name" maxlength="50">
                               <label for="floatingLastName"  class="ms-2">Last name</label>
                             </div>
                           </div>
@@ -63,7 +64,7 @@
                           <div class="mb-3 row">
                             <label class="col-form-label col-auto">Date of Birth: </label>
                             <div class="col-auto">
-                                <input class="form-control" type="date" placeholder="Date of Birth">
+                                <input class="form-control" type="date" placeholder="Date of Birth" name="birth_date">
                             </div>
                           </div>
                         </div>
@@ -72,7 +73,7 @@
                   </div>
               </div>
               <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" id="editorSend">Create</button>
+                  <button type="button" class="btn btn-primary" id="createUserButton">Create</button>
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               </div>
           </div>

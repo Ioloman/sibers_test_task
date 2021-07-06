@@ -36,4 +36,13 @@ class UserModel{
 
         return $this->db->results();
     }
+
+    public function getRoles(){
+        $this->db->query(
+            "SELECT *
+            FROM roles;"
+        );
+
+        return $this->db->results();
+    }
 }

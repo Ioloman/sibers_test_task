@@ -98,6 +98,8 @@ $scripts = [
   'static/js/pagination.js',
   'static/js/sorting.js',
   'static/js/modalSetting.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js',
+  '//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js',
 ];
 include 'inc/footer.php'
 ?>
