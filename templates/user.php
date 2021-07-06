@@ -1,3 +1,8 @@
+<!-- 
+user details page
+basically just a copy of user creation modal
+ -->
+
 <!-- include top parts of the page and pass variables there -->
 <?php
 /**
@@ -95,7 +100,7 @@ include 'inc/header.php'
 <!-- include footer -->
 <?php
 /**
- * @var array $scripts
+ * @var array $scripts - pass scripts to the footer
  */
 $scripts = [
     '/static/js/helpers.js',

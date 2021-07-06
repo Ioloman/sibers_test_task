@@ -1,3 +1,5 @@
+<!-- header that show login/logout button -->
+
 <!doctype html>
 <html lang="en">
 
@@ -26,6 +28,7 @@
                             <a class="nav-link <?php if ($_SERVER['PHP_SELF'] == ROOT_URL) echo ' active'; ?>" href="<?php echo ROOT_URL; ?>">Manage Users</a>
                         </li>
                     </ul>
+                    <!-- links are provided as defined constants -->
                     <?php if (!$_SESSION['is_logged_in']): ?>
                     <a class="btn btn-primary" href="<?php echo LOGIN_URL; ?>">
                         Log In

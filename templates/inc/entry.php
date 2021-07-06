@@ -1,3 +1,4 @@
+<!-- a single user entry line from a table -->
 <tr id="<?php echo $user->id; ?>">
   <td>
     <h5 class="font-medium mb-0"><?php echo $user->login; ?></h5>

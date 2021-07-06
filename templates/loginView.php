@@ -32,7 +32,7 @@ include 'inc/header.php'
 <!-- include footer -->
 <?php
 /**
- * @var array $scripts
+ * @var array $scripts - pass scripts to the footer
  */
 $scripts = [
     '/static/js/login.js',

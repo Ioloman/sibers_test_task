@@ -1,3 +1,8 @@
+<!-- 
+two modals:
+first for user adding
+second for errors display
+ -->
 <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
       <div class="modal-dialog">
           <div class="modal-content">
@@ -22,6 +27,7 @@
                       <label class="col-form-label col-2">Role: </label>
                       <div class="col-auto">
                         <select class="form-select" name="role">
+                          <!-- roles passed from server -->
                           <?php foreach ($roles as $role): ?>
                           <?php echo "<option value=\"$role->id\"".($role->id == 1 ? " selected" : "").">$role->role</option>" ?>
                           <?php endforeach; ?>

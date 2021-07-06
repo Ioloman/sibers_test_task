@@ -1,3 +1,5 @@
+<!-- footer, includes passed scripts -->
+
 <footer class="container">
         <hr>
         <p>&copy; iCal Network 2020-2021</p>

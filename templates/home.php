@@ -1,3 +1,5 @@
+<!-- the main page -->
+
 <!-- include top parts of the page and pass variables there -->
 <?php
 /**
@@ -7,6 +9,7 @@ $title = 'Admin';
 include 'inc/header.php'
 ?>
 <main>
+  <!-- authenticated content -->
   <?php if ($_SESSION['is_logged_in']): ?>
 
   <!-- modal window for users creation -->
@@ -28,6 +31,7 @@ include 'inc/header.php'
                 <div class="col-auto row my-2 mx-2">
                   <label class="col-form-label col-auto">Show</label>
                   <div class="col-auto">
+                    <!-- select how many pages to display -->
                     <select class="form-select" id="show">
                       <?php foreach (array(10, 25, 50, 100) as $v): ?>
                       <?php echo '<option value="'.$v.'"'.(!isset($show) && $v == 10 ? ' selected' : (isset($show) && $show == $v ? ' selected' : '')).'>'.$v.'</option>'; ?>
@@ -61,8 +65,10 @@ include 'inc/header.php'
             </table>
           </div>
           <div class="card-footer clearfix">
+            <!-- info about pages -->
             <?php include 'inc/calculatePages.php' ?>
             <div class="float-md-end">
+            <!-- pagination (just a default template) - rendered by javascript -->
             <nav>
               <ul class="pagination" data-entries-total="<?php echo $total; ?>">
                 <li class="page-item disabled">
@@ -84,6 +90,7 @@ include 'inc/header.php'
       </div>
     </div>
   </div>
+  <!-- unauthenticated content (jumbotron) -->
   <?php else: ?>
 
     <div class="p-5 mb-4 rounded-3 bg-light">
@@ -100,7 +107,7 @@ include 'inc/header.php'
 <!-- include footer -->
 <?php
 /**
- * @var array $scripts
+ * @var array $scripts - pass scripts to the footer
  */
 $scripts = [
   '/static/js/helpers.js',
