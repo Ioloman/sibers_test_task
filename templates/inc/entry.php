@@ -1,15 +1,15 @@
 <tr>
   <td>
-    <h5 class="font-medium mb-0">kirill</h5>
+    <h5 class="font-medium mb-0"><?php echo $user->login; ?></h5>
   </td>
   <td>
-    <span class="text-muted">Kirill Dudchenko</span><br>
+    <span class="text-muted"><?php echo $user->last_name.' '.$user->first_name; ?></span><br>
   </td>
   <td>
-    <span class="text-muted">15 Mar 2021</span><br>
+    <span class="text-muted"><?php $date = strtotime($user->created_at); echo date("d.m.Y", $date).' at '.date("H:i:s", $date); ?></span><br>
   </td>
   <td>
-    <span class="text-muted">Admin</span>
+    <span class="text-muted"><?php echo $user->role; ?></span>
   </td>
   <td>
     <button type="button" class="btn btn-outline-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

@@ -26,11 +26,10 @@ include 'inc/header.php'
                 <div class="col-auto row my-2 mx-2">
                   <label class="col-form-label col-auto">Show</label>
                   <div class="col-auto">
-                    <select class="form-select">
-                      <option selected value="10">10</option>
-                      <option value="25">25</option>
-                      <option value="50">50</option>
-                      <option value="100">100</option>
+                    <select class="form-select" id="show">
+                      <?php foreach (array(10, 25, 50, 100) as $v): ?>
+                      <?php echo '<option value="'.$v.'"'.(!isset($show) && $v == 10 ? ' selected' : (isset($show) && $show == $v ? ' selected' : '')).'>'.$v.'</option>'; ?>
+                      <?php endforeach; ?>
                     </select>
                   </div>
                   <label class="col-form-label col-auto">entries</label>
@@ -40,24 +39,49 @@ include 'inc/header.php'
             <table class="table no-wrap user-table mb-0">
               <thead>
                 <tr>
-                  <th scope="col" class="border-0 fs-5 sorting">Login</th>
-                  <th scope="col" class="border-0 fs-5 sorting">Name</th>
-                  <th scope="col" class="border-0 fs-5 sorting">Added</th>
+                  <?php 
+                  $sortingClass = $sorting[0] === 'd' ? 'sorting_desc' : 'sorting_asc'; 
+                  $sortingField = substr($sorting, 1);
+                  ?>
+                  <th scope="col" class="border-0 fs-5 sorting <?php if ($sortingField === 'login') echo $sortingClass ?>" data-sorting-field="login">Login</th>
+                  <th scope="col" class="border-0 fs-5 sorting <?php if ($sortingField === 'last_name') echo $sortingClass ?>" data-sorting-field="last_name">Name</th>
+                  <th scope="col" class="border-0 fs-5 sorting <?php if ($sortingField === 'created_at') echo $sortingClass ?>" data-sorting-field="created_at">Added</th>
                   <th scope="col" class="border-0 fs-5">Role</th>
                   <th scope="col" class="border-0 fs-5">Manage</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="entries">
                 <!-- include user entries -->
-                <?php for ($i = 0; $i < 3; $i++) : ?>
+                <?php foreach ($users as $user) : ?>
                 <?php include 'inc/entry.php' ?>
-                <?php endfor; ?>
+                <?php endforeach; ?>
               </tbody>
             </table>
           </div>
           <div class="card-footer clearfix">
-            <div class="float-md-start">Showing 21 to 30 of 57 entries</div>
-            <div class="float-md-end">PAGINATION</div>
+            <div class="float-md-start">Showing 
+              <?php 
+              $offset = $show * ($page - 1);
+              echo strval(1 + $offset)." to ".strval(($show + $offset) > $total ? $total : ($show + $offset))." of $total entries"; 
+              ?>
+            </div>
+            <div class="float-md-end">
+            <nav>
+              <ul class="pagination" data-entries-total="<?php echo $total; ?>">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active" aria-current="page">
+                  <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+            </div>
           </div>
         </div>
       </div>
@@ -71,6 +95,7 @@ include 'inc/header.php'
  * @var array $scripts
  */
 $scripts = [
+  'static/js/pagination.js',
   'static/js/sorting.js',
   'static/js/modalSetting.js',
 ];
