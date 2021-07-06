@@ -1,7 +1,6 @@
 $(function(){
     $('#update').on('click', function(e){
         const result = customValidate($('form'), true);
-        console.log('here')
         if (result){
             e.preventDefault();
             const $container = $('div#content');

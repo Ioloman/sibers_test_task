@@ -127,4 +127,33 @@ class UserModel{
         } else 
             return false;
     }
+
+    public function login($credentials){
+        $this->db->query(
+            "SELECT *
+            FROM users
+            WHERE login = :login AND password = :password;"
+        );
+
+        $this->db->bind(':login', $credentials['login']);
+        $this->db->bind(':password', md5($credentials['password']));
+
+        $result =  $this->db->result();
+
+        if ($result->role_id == 2){
+            $_SESSION['is_logged_in'] = true;
+            $_SESSION['user_data'] = [
+                'id' => $result->id,
+                'login' => $result->login
+            ];
+            return true;
+        } else 
+            return false;
+    }
+
+    public function logout(){
+        unset($_SESSION['user_data']);
+        unset($_SESSION['is_logged_in']);
+        session_destroy();
+    }
 }

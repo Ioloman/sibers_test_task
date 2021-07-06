@@ -3,7 +3,7 @@
 /**
  * @var mixed $title
  */
-$title = $user->login;
+$title = "User: $user->login";
 include 'inc/header.php'
 ?>
 <main>

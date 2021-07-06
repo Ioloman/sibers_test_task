@@ -23,21 +23,19 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <!-- <a class="nav-link @if(Request::url() === route('homepage'))active @endif" href="{{ route('homepage') }}">Главная</a> -->
-                            <a class="nav-link active" href="<?php echo ROOT_URL; ?>">Manage Users</a>
+                            <a class="nav-link <?php if ($_SERVER['PHP_SELF'] == ROOT_URL) echo ' active'; ?>" href="<?php echo ROOT_URL; ?>">Manage Users</a>
                         </li>
                     </ul>
-                    <!-- guest -->
-                    <a class="btn btn-primary" href="#">
+                    <?php if (!$_SESSION['is_logged_in']): ?>
+                    <a class="btn btn-primary" href="<?php echo LOGIN_URL; ?>">
                         Log In
                     </a>
-                    <!--  -->
-                    <!-- auth -->
-                    <!-- <a class="btn btn-primary" href="#">
+                    <?php endif; ?>
+                    <?php if ($_SESSION['is_logged_in']): ?>
+                    <a class="btn btn-primary" href="<?php echo LOGOUT_URL; ?>">
                         Log Out
-                    </a> -->
-                    <!--  -->
-                    @endauth
+                    </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </nav>

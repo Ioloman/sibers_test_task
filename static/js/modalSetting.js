@@ -2,6 +2,12 @@ $(function (){
     $('#createUserButton').on('click', function(){
         const $inputs = $(this).parent().parent().find('input, select');
 
+        const data = {};
+
+        for (const input of $inputs.serializeArray())
+            if (input.value !== "")
+                data[input.name] = input.value;
+
         const result = customValidate($inputs);
         
         const $modalBody = $(this).parent().parent().find('.modal-body');
@@ -11,7 +17,7 @@ $(function (){
                 type: 'POST',
                 url: "/newUser.php",
                 dataType: 'html',
-                data: objectToValidate
+                data: data
             }).done((data, textStatus, jqXHR) => {
                 $modalBody.find('.alert').remove();
                 $modalBody.find('input, select').val('');

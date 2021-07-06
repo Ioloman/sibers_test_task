@@ -8,10 +8,16 @@ spl_autoload_register(function (string $class_name){
     require_once 'src/' . $class_name . '.php';
 });
 
-define('ROOT_URL', '/');
+session_start();
+
+define('ROOT_URL', '/index.php');
 
 define('USER_URL', '/userEntry.php');
 
 define('DELETE_URL', '/deleteUser.php');
 
 define('UPDATE_URL', '/updateUser.php');
+
+define('LOGIN_URL', '/login.php');
+
+define('LOGOUT_URL', '/logout.php');

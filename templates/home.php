@@ -7,8 +7,10 @@ $title = 'Admin';
 include 'inc/header.php'
 ?>
 <main>
+  <?php if ($_SESSION['is_logged_in']): ?>
+
   <!-- modal window for users creation -->
-  <?php include 'inc/modal.php' ?>
+  <?php include 'inc/modal.php'; ?>
 
   <div class="container mt-2">
     <div class="row">
@@ -82,6 +84,17 @@ include 'inc/header.php'
       </div>
     </div>
   </div>
+  <?php else: ?>
+
+    <div class="p-5 mb-4 rounded-3 bg-light">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Admin page</h1>
+            <p class="col-md-8 fs-4">Please, log in to be able to manage users.</p>
+            <a class="btn btn-primary btn-lg" type="button" href="<?php echo LOGIN_URL; ?>">Log In</a>
+        </div>
+    </div>
+
+  <?php endif; ?>
 
 </main>
 <!-- include footer -->
