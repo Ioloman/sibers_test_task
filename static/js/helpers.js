@@ -1,10 +1,20 @@
+/**
+ * this function is used to validate user create or update actions
+ * returns array of errors
+ * 
+ * @param {jQuery collection} $inputs 
+ * @param {boolean} update 
+ * @returns object
+ */
 function customValidate($inputs, update=false){
-    const objectToValidate = {};
 
+    // form an object suitable for validation function
+    const objectToValidate = {};
     for (const input of $inputs.serializeArray())
         if (input.value !== "")
             objectToValidate[input.name] = input.value;
 
+    // declare the rules
     const constraints = {
         login: {
             presence: true,
@@ -84,6 +94,7 @@ function customValidate($inputs, update=false){
         }
     };
 
+    // prepare validator for date validation
     validate.extend(validate.validators.datetime, {
         parse: function(value, options) {
             return +moment.utc(value);
@@ -94,5 +105,6 @@ function customValidate($inputs, update=false){
         }
         });
 
+    // use validate() from validate.js which returns a javascript object aka dictionary 
     return validate(objectToValidate, constraints);
 }
