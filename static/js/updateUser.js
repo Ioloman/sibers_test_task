@@ -19,6 +19,8 @@ $(function(){
                 $container.prepend($message);
                 $message.slideDown(400);
             }
+        } else {
+            $('form').append($('<input type="hidden" name="url"/>').val(window.localStorage.getItem('url')))
         }
     });
 });

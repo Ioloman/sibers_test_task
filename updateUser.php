@@ -21,7 +21,7 @@ foreach($post as $key => $value){
 
 // if update is successful redirect to the main page
 if ($model->updateUser($post)){
-    header("Location: ".ROOT_URL);
+    header("Location: ".ROOT_URL.$post['url']);
     exit();
 }
 // if update is unsuccessful return 523 status code

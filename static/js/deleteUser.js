@@ -39,6 +39,12 @@ function addDeleteListeners(){
             console.log( "Status: " + status );
         });
     })
+
+    // listeners to remember url when going to update page
+    // sorry for leaving it in this file
+    $('a[data-update-link="true"]').on('click', function (){
+        window.localStorage.setItem('url', window.location.search);
+    });
 }
 
 $(function() {
